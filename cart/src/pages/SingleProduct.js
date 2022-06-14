@@ -10,15 +10,10 @@ import { addToCart } from '../features/filter/filterSlice'
 const SingleProduct = () => {
   const { id, title, description, price, category, image, isLoading } =
     useSelector((state) => state.product)
+
   const { productId } = useParams()
-  useEffect(() => {
-    let tempCart = [
-      { id: '', image: '', category: '', title: '', price: '', amount: '' },
-    ]
-    localStorage.setItem('tempCart', JSON.stringify(tempCart))
-  }, [])
   const dispatch = useDispatch()
-  const handleAddToCart = (title, price, category, image, id) => {
+  const handleAddToCart = () => {
     dispatch(addToCart({ id, title, price, category, image }))
   }
   useEffect(() => {
@@ -52,7 +47,13 @@ const SingleProduct = () => {
               </span>
               <button
                 onClick={() =>
-                  handleAddToCart(title, price, category, image, id)
+                  handleAddToCart({
+                    id,
+                    title,
+                    price,
+                    category,
+                    image,
+                  })
                 }
                 className='flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded'
               >

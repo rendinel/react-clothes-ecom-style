@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Contact from './Contact'
 import ProductsFilter from './ProductsFilter'
 import SharedLayout from './SharedLayout'
+import CartProduct from './CartProduct'
 export {
   SharedLayout,
   Navbar,
@@ -13,4 +14,5 @@ export {
   Footer,
   Contact,
   ProductsFilter,
+  CartProduct,
 }
