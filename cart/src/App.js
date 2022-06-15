@@ -7,14 +7,21 @@ import Products from './pages/Products'
 import SingleProduct from './pages/SingleProduct'
 import Cart from './pages/Cart'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from './features/cart/cartSlice'
+import { calculateTotal } from './features/filter/filterSlice'
+
 function App() {
+  const { cart } = useSelector((state) => state.filter)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getProducts())
     // eslint-disable-next-line
   }, [])
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+    dispatch(calculateTotal())
+  }, [cart])
   return (
     <BrowserRouter>
       <Routes>

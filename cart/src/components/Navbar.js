@@ -2,7 +2,10 @@ import React from 'react'
 import logo from '../assets/logo.png'
 import { NavLink } from 'react-router-dom'
 import { AiOutlineLogin } from 'react-icons/ai'
+import { useSelector } from 'react-redux'
+
 const Navbar = () => {
+  const { totalItems } = useSelector((state) => state.filter)
   return (
     <header className='text-gray-600 body-font'>
       <div className='container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center'>
@@ -29,11 +32,16 @@ const Navbar = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? 'mr-5 text-blue-500' : 'text-gray-500 mr-5'
+              isActive
+                ? 'mr-5 text-blue-500 relative'
+                : 'text-gray-500 mr-5 relative'
             }
             to='/cart'
           >
             Cart
+            <div className='div  h-3.5 w-3.5 rounded-full absolute top-0 left-8 flex justify-center items-center'>
+              {totalItems}
+            </div>
           </NavLink>
         </nav>
         <button className='inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base ml-4 mt-4 md:mt-0'>

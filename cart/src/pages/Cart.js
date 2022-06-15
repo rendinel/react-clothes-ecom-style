@@ -12,10 +12,10 @@ const Cart = () => {
   const cleanCart = () => {
     dispatch(clearCart())
   }
-  useEffect(() => {
-    dispatch(calculateTotal())
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }, [cart])
+  // useEffect(() => {
+  //   localStorage.setItem('cart', JSON.stringify(cart))
+  //   dispatch(calculateTotal())
+  // }, [cart])
   return (
     <div className='container mx-auto mt-10'>
       <div className='flex  my-10'>
